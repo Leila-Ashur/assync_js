@@ -1,3 +1,4 @@
+
 // Write an asynchronous function that accepts a message string
 //  and a delay time in milliseconds. The function should 
 // log the message to the console after the specified
@@ -14,18 +15,24 @@ logMessageWithDelay("I am a girl",1000)
 //  that returns a Promise with user data when given a user ID.
 //  Write an asynchronous function that fetches and logs the
 //  data for each user ID one by one, in sequence.
-async function fetchAndLogsTheUserData(userIds) {
-    for(const Id in userIds){
-        const userData = await userData(Id);
-        console.log(userData);
-
-    }
-    
+function performTask(task){
+  console.log('task successful');
 }
-const userIds=[23,54,67,89]
-fetchAndLogsTheUserData(userIds);
-
-
+performTask()
+let successMessage=[{}]
+let task=new Promise((resolve,reject)=>{
+  if(successMessage){
+      return resolve((' success message'))
+  }
+  else{
+      return reject((' error message'))
+  }
+})
+async function customMessage(){
+  let message=await task
+  console.log({message})
+}
+customMessage()
 
 
 // You have an asynchronous function performTask() that
@@ -34,26 +41,17 @@ fetchAndLogsTheUserData(userIds);
 //  that calls performTask() and logs a custom success message
 //  if the task is successful, and a custom error message if 
 // there's an error.
-function performTask(task) {
-  console.log("task successful")
-}
-performTask()
 
-let message=[{}]
-let task=new Promise((resolve,reject)=>{
-  if(message){
-    return ((resolve('task was successful')))
+ async function runTask() {
+   try {
+     await performTask();
+     console.log('Task completed successfully!');
+   } catch (error) {
+     console.log('Task encountered an error:', error);
+   }
+ }
+ runTask()
+  
 
-  }
-  else{
-    return reject(("task not successful"))
-  }
-  })
-  async function customMessage(){
-    let task=await task
-    console.log({task});
-  }
-  customMessage()
 
-    
 
